@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/layout/header::header">
+
+</head>
+<body class="boxed-layout">
+<div>
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0">
+        <div>
+            <a href="https://vnvc.vn/virus-corona-2019/">
+                <img style="height: 113px; width: 100%"
+                     alt="virus corona 2019"
+                     class="img-responsive hidden-xs"
+                     src="https://vnvc.vn/wp-content/uploads/2021/06/virus-corona-covid-19-pc.jpg"
+                />
+            </a>
+        </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <a href="/"><button class="btn btn-primary buttonout">Đăng xuất</button></a>
+        <div class="row row-offcanvas row-offcanvas-right">
+            <!-- partial:../../partials/_settings-panel.html -->
+            <div class="theme-setting-wrapper">
+                <div id="settings-trigger">
+                    <i class="mdi mdi-settings"></i>
+                </div>
+                <div id="theme-settings" class="settings-panel">
+                    <i class="settings-close mdi mdi-close"></i>
+                    <p class="settings-heading">SIDEBAR SKINS</p>
+                    <div
+                            class="sidebar-bg-options selected"
+                            id="sidebar-light-theme"
+                    >
+                        <div
+                                class="
+                                        img-ss
+                                        rounded-circle
+                                        bg-light
+                                        border
+                                        mr-3
+                                    "
+                        ></div>
+                        Light
+                    </div>
+                    <div
+                            class="sidebar-bg-options"
+                            id="sidebar-dark-theme"
+                    >
+                        <div
+                                class="
+                                        img-ss
+                                        rounded-circle
+                                        bg-dark
+                                        border
+                                        mr-3
+                                    "
+                        ></div>
+                        Dark
+                    </div>
+                    <p class="settings-heading mt-2">HEADER SKINS</p>
+                    <div class="color-tiles mx-0 px-4">
+                        <div class="tiles primary"></div>
+                        <div class="tiles success"></div>
+                        <div class="tiles warning"></div>
+                        <div class="tiles danger"></div>
+                        <div class="tiles pink"></div>
+                        <div class="tiles info"></div>
+                        <div class="tiles dark"></div>
+                        <div class="tiles default"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="right-sidebar" class="settings-panel">
+                <i class="settings-close mdi mdi-close"></i>
+                <ul
+                        class="nav nav-tabs"
+                        id="setting-panel"
+                        role="tablist"
+                >
+                    <li class="nav-item">
+                        <a
+                                class="nav-link active"
+                                id="todo-tab"
+                                data-toggle="tab"
+                                href="#todo-section"
+                                role="tab"
+                                aria-controls="todo-section"
+                                aria-expanded="true"
+                        >TO DO LIST</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a
+                                class="nav-link"
+                                id="chats-tab"
+                                data-toggle="tab"
+                                href="#chats-section"
+                                role="tab"
+                                aria-controls="chats-section"
+                        >CHATS</a
+                        >
+                    </li>
+                </ul>
+                <div class="tab-content" id="setting-content">
+                    <div
+                            class="tab-pane fade show active scroll-wrapper"
+                            id="todo-section"
+                            role="tabpanel"
+                            aria-labelledby="todo-section"
+                    >
+                        <div class="add-items d-flex px-3 mb-0">
+                            <form class="form w-100">
+                                <------------------------------------------------------modal------------------------------------------------->
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel"><span id="exampleModalLabelSpan"></span></h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form role="form" id="registration">
+                                                    <div class="md-6">
+                                                        <input type="hidden" class="form-control" id="cId"
+                                                               name="upName">
+                                                    </div>
+                                                    <div class="md-6">
+                                                        <label class="form-label">Tên Địa điểm tiêm chủng: </label>
+                                                        <input type="text" class="form-control" id="cName"
+                                                               name="upName">
+                                                    </div>
+                                                    <div class="md-6">
+                                                        <label class="form-label">Kho Vaccine: </label>
+                                                        <select class="select-group col-md-12" style="height: 37px;"  name="cWarehouse" id="cWarehouse" >
+                                                            <option>--Chọn Kho Vaccine--</option>
+                                                            <option th:each="k: ${warehouses}"
+                                                                    th:value="${k.id}"
+                                                                    th:text="${k.warehouseName}"
+                                                            ></option>
+                                                        </select>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary close-modal" data-dismiss="modal">
+                                                    Thoát
+                                                </button>
+                                                <button type="button" class="btn btn-primary" th:onclick="editDestination()" >Lưu</button>
+                                                <input type="hidden" id="kId" name="kId">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <------------------------------------------------------modal------------------------------------------------->
+                            </form>
+                        </div>
+                        <div class="list-wrapper px-3">
+                            <ul
+                                    class="
+                                            d-flex
+                                            flex-column-reverse
+                                            todo-list
+                                        "
+                            >
+                                <li>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                    class="checkbox"
+                                                    type="checkbox"
+                                            />
+                                            Team review meeting at 3.00
+                                            PM
+                                        </label>
+                                    </div>
+                                    <i
+                                            class="
+                                                    remove
+                                                    mdi mdi-close-circle-outline
+                                                "
+                                    ></i>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                    class="checkbox"
+                                                    type="checkbox"
+                                            />
+                                            Prepare for presentation
+                                        </label>
+                                    </div>
+                                    <i
+                                            class="
+                                                    remove
+                                                    mdi mdi-close-circle-outline
+                                                "
+                                    ></i>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                    class="checkbox"
+                                                    type="checkbox"
+                                            />
+                                            Resolve all the low priority
+                                            tickets due today
+                                        </label>
+                                    </div>
+                                    <i
+                                            class="
+                                                    remove
+                                                    mdi mdi-close-circle-outline
+                                                "
+                                    ></i>
+                                </li>
+                                <li class="completed">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                    class="checkbox"
+                                                    type="checkbox"
+                                                    checked=""
+                                            />
+                                            Schedule meeting for next
+                                            week
+                                        </label>
+                                    </div>
+                                    <i
+                                            class="
+                                                    remove
+                                                    mdi mdi-close-circle-outline
+                                                "
+                                    ></i>
+                                </li>
+                                <li class="completed">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input
+                                                    class="checkbox"
+                                                    type="checkbox"
+                                                    checked=""
+                                            />
+                                            Project review
+                                        </label>
+                                    </div>
+                                    <i
+                                            class="
+                                                    remove
+                                                    mdi mdi-close-circle-outline
+                                                "
+                                    ></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="events py-4 border-bottom px-3">
+                            <div class="wrapper d-flex mb-2">
+                                <i
+                                        class="
+                                                mdi mdi-circle-outline
+                                                text-primary
+                                                mr-2
+                                            "
+                                ></i>
+                                <span>Feb 11 2018</span>
+                            </div>
+                            <p class="mb-0 font-weight-thin text-gray">
+                                Creating component page
+                            </p>
+                            <p class="text-gray mb-0">
+                                build a js based app
+                            </p>
+                        </div>
+                        <div class="events pt-4 px-3">
+                            <div class="wrapper d-flex mb-2">
+                                <i
+                                        class="
+                                                mdi mdi-circle-outline
+                                                text-primary
+                                                mr-2
+                                            "
+                                ></i>
+                                <span>Feb 7 2018</span>
+                            </div>
+                            <p class="mb-0 font-weight-thin text-gray">
+                                Meeting with Alisa
+                            </p>
+                            <p class="text-gray mb-0">
+                                Call Sarah Graves
+                            </p>
+                        </div>
+                    </div>
+                    <!-- To do section tab ends -->
+                    <div
+                            class="tab-pane fade"
+                            id="chats-section"
+                            role="tabpanel"
+                            aria-labelledby="chats-section"
+                    >
+                        <div
+                                class="
+                                        d-flex
+                                        align-items-center
+                                        justify-content-between
+                                        border-bottom
+                                    "
+                        >
+                            <p
+                                    class="
+                                            settings-heading
+                                            border-top-0
+                                            mb-3
+                                            pl-3
+                                            pt-0
+                                            border-bottom-0
+                                            pb-0
+                                        "
+                            >
+                                Friends
+                            </p>
+                            <small
+                                    class="
+                                            settings-heading
+                                            border-top-0
+                                            mb-3
+                                            pt-0
+                                            border-bottom-0
+                                            pb-0
+                                            pr-3
+                                            font-weight-normal
+                                        "
+                            >See All</small
+                            >
+                        </div>
+                        <ul class="chat-list">
+                            <li class="list active">
+                                <div class="profile">
+                                    <img
+                                            src="../../../template/images/faces/face1.jpg"
+                                            alt="image"
+                                    /><span class="online"></span>
+                                </div>
+                                <div class="info">
+                                    <p>Thomas Douglas</p>
+                                    <p>Available</p>
+                                </div>
+                                <small class="text-muted my-auto"
+                                >19 min</small
+                                >
+                            </li>
+                            <li class="list">
+                                <div class="profile">
+                                    <img
+                                            src="../../../template/images/faces/face2.jpg"
+                                            alt="image"
+                                    /><span class="offline"></span>
+                                </div>
+                                <div class="info">
+                                    <div class="wrapper d-flex">
+                                        <p>Catherine</p>
+                                    </div>
+                                    <p>Away</p>
+                                </div>
+                                <div
+                                        class="
+                                                badge badge-success badge-pill
+                                                my-auto
+                                                mx-2
+                                            "
+                                >
+                                    4
+                                </div>
+                                <small class="text-muted my-auto"
+                                >23 min</small
+                                >
+                            </li>
+                            <li class="list">
+                                <div class="profile">
+                                    <img
+                                            src="../../../template/images/faces/face3.jpg"
+                                            alt="image"
+                                    /><span class="online"></span>
+                                </div>
+                                <div class="info">
+                                    <p>Daniel Russell</p>
+                                    <p>Available</p>
+                                </div>
+                                <small class="text-muted my-auto"
+                                >14 min</small
+                                >
+                            </li>
+                            <li class="list">
+                                <div class="profile">
+                                    <img
+                                            src="../../../template/images/faces/face4.jpg"
+                                            alt="image"
+                                    /><span class="offline"></span>
+                                </div>
+                                <div class="info">
+                                    <p>James Richardson</p>
+                                    <p>Away</p>
+                                </div>
+                                <small class="text-muted my-auto"
+                                >2 min</small
+                                >
+                            </li>
+                            <li class="list">
+                                <div class="profile">
+                                    <img
+                                            src="../../../template/images/faces/face5.jpg"
+                                            alt="image"
+                                    /><span class="online"></span>
+                                </div>
+                                <div class="info">
+                                    <p>Madeline Kennedy</p>
+                                    <p>Available</p>
+                                </div>
+                                <small class="text-muted my-auto"
+                                >5 min</small
+                                >
+                            </li>
+                            <li class="list">
+                                <div class="profile">
+                                    <img
+                                            src="../../../template/images/faces/face6.jpg"
+                                            alt="image"
+                                    /><span class="online"></span>
+                                </div>
+                                <div class="info">
+                                    <p>Sarah Graves</p>
+                                    <p>Available</p>
+                                </div>
+                                <small class="text-muted my-auto"
+                                >47 min</small
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- chat tab ends -->
+                </div>
+            </div>
+            <!-- partial -->
+            <!-- partial:../../partials/_sidebar.html -->
+            <footer th:replace="/layout/footer::footer">
+            </footer>
+            <!-- partial -->
+            <div class="content-wrapper">
+                <div class="row">
+                    <div
+                            class="
+                                    col-md-6 col-lg-3
+                                    grid-margin
+                                    stretch-card
+                                "
+                    >
+                        <div class="card">
+                            <div class="card-body">
+                                <div
+                                        class="
+                                                d-flex
+                                                align-items-center
+                                                justify-content-md-center
+                                            "
+                                >
+                                    <i
+                                            class="
+                                                    mdi mdi-basket
+                                                    icon-lg
+                                                    text-success
+                                                "
+                                    ></i>
+                                    <div class="ml-3">
+                                        <p class="mb-0">Daily Order</p>
+                                        <h6>12569</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                            class="
+                                    col-md-6 col-lg-3
+                                    grid-margin
+                                    stretch-card
+                                "
+                    >
+                        <div class="card">
+                            <div class="card-body">
+                                <div
+                                        class="
+                                                d-flex
+                                                align-items-center
+                                                justify-content-md-center
+                                            "
+                                >
+                                    <i
+                                            class="
+                                                    mdi mdi-rocket
+                                                    icon-lg
+                                                    text-warning
+                                                "
+                                    ></i>
+                                    <div class="ml-3">
+                                        <p class="mb-0">
+                                            Tasks Completed
+                                        </p>
+                                        <h6>2346</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                            class="
+                                    col-md-6 col-lg-3
+                                    grid-margin
+                                    stretch-card
+                                "
+                    >
+                        <div class="card">
+                            <div class="card-body">
+                                <div
+                                        class="
+                                                d-flex
+                                                align-items-center
+                                                justify-content-md-center
+                                            "
+                                >
+                                    <i
+                                            class="
+                                                    mdi mdi-diamond
+                                                    icon-lg
+                                                    text-info
+                                                "
+                                    ></i>
+                                    <div class="ml-3">
+                                        <p class="mb-0">
+                                            Monthly Sales
+                                        </p>
+                                        <h6>896546</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                            class="
+                                    col-md-6 col-lg-3
+                                    grid-margin
+                                    stretch-card
+                                "
+                    >
+                        <div class="card">
+                            <div class="card-body">
+                                <div
+                                        class="
+                                                d-flex
+                                                align-items-center
+                                                justify-content-md-center
+                                            "
+                                >
+                                    <i
+                                            class="
+                                                    mdi mdi-chart-line-stacked
+                                                    icon-lg
+                                                    text-danger
+                                                "
+                                    ></i>
+                                    <div class="ml-3">
+                                        <p class="mb-0">
+                                            Total Revenue
+                                        </p>
+                                        <h6>$ 56000</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--              -------------------------------------------------------  table-------------------------------------------------------->
+
+                <div class="row grid-margin">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 id="dt" class="card-title">Điểm tiêm chủng</h3>
+                                <div class="d-flex table-responsive">
+                                    <div class="btn-group mr-2">
+                                        <button onclick="loadAddnew()"
+                                                type="button"
+                                                data-toggle="modal" data-target="#exampleModal"
+                                                data-whatever="@mdo"
+                                                class="btn btn-primary"
+                                        >
+                                            <i
+                                                    class="
+                                                            mdi
+                                                            mdi-plus-circle-outline
+                                                        "
+                                            ></i>
+                                            Tạo Điểm Tiêm Chủng Mới
+                                        </button>
+                                    </div>
+                                    <div class="btn-group mr-2">
+                                        <button
+                                                type="button"
+                                                class="btn btn-light"
+                                        >
+                                            <i
+                                                    class="
+                                                            mdi
+                                                            mdi-alert-circle-outline
+                                                        "
+                                            ></i>
+                                        </button>
+                                        <button
+                                                type="button"
+                                                class="btn btn-light"
+                                        >
+                                            <i
+                                                    class="
+                                                            mdi mdi-delete-empty
+                                                        "
+                                            ></i>
+                                        </button>
+                                    </div>
+                                    <div class="btn-group mr-2">
+                                        <button
+                                                type="button"
+                                                class="btn btn-light"
+                                        >
+                                            <i
+                                                    class="mdi mdi-printer"
+                                            ></i>
+                                        </button>
+                                    </div>
+                                    <div
+                                            class="
+                                                    btn-group
+                                                    ml-auto
+                                                    mr-2
+                                                    border-0
+                                                "
+                                    >
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Search Here"
+                                        />
+                                    </div>
+                                    <div class="btn-group">
+                                        <button
+                                                type="button"
+                                                class="btn btn-light"
+                                        >
+                                            <i
+                                                    class="mdi mdi-cloud"
+                                            ></i>
+                                        </button>
+                                        <button
+                                                type="button"
+                                                class="btn btn-light"
+                                        >
+                                            <i
+                                                    class="
+                                                            mdi
+                                                            mdi-dots-vertical
+                                                        "
+                                            ></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table  id="destinationList"
+                                            class="table mt-3 border-top"
+                                    >
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Tên điểm tiêm chủng</th>
+                                            <th>Địa chỉ kho vaccine</th>
+                                            <th>Option</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <th:block th:each="d : ${destination}">
+                                            <tr th:id="'row' + ${d.id}">
+                                                <td th:text="${d.id}"></td>
+                                                <td th:text="${d.nameDestination}"></td>
+                                                <td th:text="${d.warehouseVaccine.warehouseName}"></td>
+                                                <td>
+                                                    <button th:onclick="'javascript:loadEditData('+${d.id}+')'" type="button" class="btn btn-primary edit" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Sửa</button>
+                                                </td>
+                                                <td>
+                                                    <button th:onclick="'javascript:deleteDestination('+${d.id}+')'" class="btn btn-danger">Xóa</button>
+                                                </td>
+                                            </tr>
+                                        </th:block>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div
+                                        class="
+                                                d-flex
+                                                align-items-center
+                                                justify-content-between
+                                                flex-column flex-sm-row
+                                                mt-4
+                                            "
+                                >
+                                    <p class="mb-3 mb-sm-0">
+                                        Showing 1 to 20 of 20 entries
+                                    </p>
+                                    <nav>
+                                        <ul
+                                                class="
+                                                        pagination
+                                                        pagination-info
+                                                        mb-0
+                                                    "
+                                        >
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                ><i
+                                                        class="
+                                                                    mdi
+                                                                    mdi-chevron-left
+                                                                "
+                                                ></i
+                                                ></a>
+                                            </li>
+                                            <li
+                                                    class="page-item active"
+                                            >
+                                                <a class="page-link"
+                                                >1</a
+                                                >
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                >2</a
+                                                >
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                >3</a
+                                                >
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                >4</a
+                                                >
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                ><i
+                                                        class="
+                                                                    mdi
+                                                                    mdi-chevron-right
+                                                                "
+                                                ></i
+                                                ></a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--               ---------------------------------------------     table-->
+
+                <div class="row">
+                    <div class="col-md-4 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <div
+                                        class="
+                                                wrapper
+                                                d-md-flex
+                                                align-items-center
+                                                justify-content-center
+                                                text-center text-md-left
+                                            "
+                                >
+                                    <i
+                                            class="
+                                                    mdi mdi-facebook
+                                                    icon-lg
+                                                    text-facebook
+                                                "
+                                    ></i>
+                                    <div class="wrapper ml-md-3">
+                                        <p
+                                                class="
+                                                        text-facebook
+                                                        mb-0
+                                                        font-weight-medium
+                                                    "
+                                        >
+                                            15k Likes
+                                        </p>
+                                        <small class="text-muted mb-0"
+                                        >You main list growing
+                                            !</small
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <div
+                                        class="
+                                                wrapper
+                                                d-md-flex
+                                                align-items-center
+                                                justify-content-center
+                                                text-center text-md-left
+                                            "
+                                >
+                                    <i
+                                            class="
+                                                    mdi mdi-twitter
+                                                    icon-lg
+                                                    text-twitter
+                                                "
+                                    ></i>
+                                    <div class="wrapper ml-md-3">
+                                        <p
+                                                class="
+                                                        text-twitter
+                                                        mb-0
+                                                        font-weight-medium
+                                                    "
+                                        >
+                                            18k followers
+                                        </p>
+                                        <small class="text-muted mb-0"
+                                        >There you are !</small
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <div
+                                        class="
+                                                wrapper
+                                                d-md-flex
+                                                align-items-center
+                                                justify-content-center
+                                                text-center text-md-left
+                                            "
+                                >
+                                    <i
+                                            class="
+                                                    mdi mdi-linkedin
+                                                    icon-lg
+                                                    text-linkedin
+                                                "
+                                    ></i>
+                                    <div class="wrapper ml-md-3">
+                                        <p
+                                                class="
+                                                        text-linkedin
+                                                        mb-0
+                                                        font-weight-medium
+                                                    "
+                                        >
+                                            5k connections
+                                        </p>
+                                        <small class="text-muted mb-0"
+                                        >Going good !</small
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <div
+                                        class="
+                                                wrapper
+                                                d-flex
+                                                align-items-center
+                                                justify-content-start
+                                                justify-content-sm-center
+                                            "
+                                >
+                                    <img
+                                            class="img-md rounded"
+                                            src="../../../template/images/faces/face1.jpg"
+                                            alt="image"
+                                    />
+                                    <div class="wrapper ml-4">
+                                        <p
+                                                class="
+                                                        mb-0
+                                                        font-weight-medium
+                                                    "
+                                        >
+                                            Tim Cook
+                                        </p>
+                                        <small class="text-muted mb-0"
+                                        >timcook@gmail.com</small
+                                        >
+                                        <p
+                                                class="
+                                                        text-success
+                                                        mb-0
+                                                        font-weight-medium
+                                                    "
+                                        >
+                                            Designer
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <div
+                                        class="
+                                                wrapper
+                                                d-flex
+                                                align-items-center
+                                                justify-content-start
+                                                justify-content-sm-center
+                                            "
+                                >
+                                    <img
+                                            class="img-md rounded"
+                                            src="../../../template/images/faces/face2.jpg"
+                                            alt="image"
+                                    />
+                                    <div class="wrapper ml-4">
+                                        <p
+                                                class="
+                                                        mb-0
+                                                        font-weight-medium
+                                                    "
+                                        >
+                                            Sarah Graves
+                                        </p>
+                                        <small class="text-muted mb-0"
+                                        >Sarahgraves@gmail.com</small
+                                        >
+                                        <p
+                                                class="
+                                                        text-success
+                                                        mb-0
+                                                        font-weight-medium
+                                                    "
+                                        >
+                                            Developer
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <div
+                                        class="
+                                                wrapper
+                                                d-flex
+                                                align-items-center
+                                                justify-content-start
+                                                justify-content-sm-center
+                                            "
+                                >
+                                    <img
+                                            class="img-md rounded"
+                                            src="../../../template/images/faces/face3.jpg"
+                                            alt="image"
+                                    />
+                                    <div class="wrapper ml-4">
+                                        <p
+                                                class="
+                                                        mb-0
+                                                        font-weight-medium
+                                                    "
+                                        >
+                                            David Grey
+                                        </p>
+                                        <small class="text-muted mb-0"
+                                        >David@gmail.com</small
+                                        >
+                                        <p
+                                                class="
+                                                        text-success
+                                                        mb-0
+                                                        font-weight-medium
+                                                    "
+                                        >
+                                            Support Lead
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- partial:../../partials/_footer.html -->
+                <footer class="footer">
+                    <div class="container-fluid clearfix">
+                                <span
+                                        class="
+                                        text-muted
+                                        d-block
+                                        text-center text-sm-left
+                                        d-sm-inline-block
+                                    "
+                                >Copyright © 2017 <a href="#">UrbanUI</a>.
+                                    All rights reserved.</span
+                                >
+                        <span
+                                class="
+                                        float-none float-sm-right
+                                        d-block
+                                        mt-1 mt-sm-0
+                                        text-center
+                                    "
+                        >Hand-crafted & made with
+                                    <i class="mdi mdi-heart text-danger"></i
+                                    ></span>
+                    </div>
+                </footer>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="/template/vendor/bootstrap/js/popper.min.js"></script>
+<script src="/template/js/sweetalert2.min.js"></script>
+<script src="/template/js/jquery-3.6.0.min.js"></script>
+<script src="/template/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/template/js/jquery.validate-1.19.3.min.js"></script>
+<script src="/template/jsdb/destination.js"></script>
+</body>
+</html>

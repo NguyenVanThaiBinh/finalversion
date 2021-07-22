@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bệnh nhân tiêm trong ngày</title>
+    <link rel="stylesheet" type="text/css" href="../../template/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+          rel="stylesheet">
+    <script rel="stylesheet" type="text/javascript" src="../../template/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../template/css/cssList.css">
+    <script src="../../template/js/jquery-3.6.0.min.js"></script>
+    <script src="/template/js/adminjs.js"></script>
+    <link href="https://vnvc.vn/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <style>
+
+        .buttonout {
+            float: right;
+            position: relative;
+            bottom: 72px;
+            right: 50px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div>
+    <a href="https://vnvc.vn/virus-corona-2019/">
+        <img style="height: 113px; width: 100%"
+             alt="virus corona 2019"
+             class="img-responsive hidden-xs"
+             src="https://vnvc.vn/wp-content/uploads/2021/06/virus-corona-covid-19-pc.jpg"
+        />
+    </a>
+    <a href="/logout">
+        <button class="btn btn-primary buttonout">Đăng xuất</button>
+    </a>
+</div>
+<br><br>
+
+<!-- partial -->
+
+
+<div class="container">
+    <h1>List Customer Done</h1>
+    <div class="form-group col-md-4 col-sm-6 col-xs-12">
+        <label class="form-control-wrap">
+            <input id="search" type="search" size="25" name="search" class="form-control"/>
+        </label>
+    </div>
+    <form>
+        <div class="form-group col-md-2 col-sm-4 col-xs-6">
+            <label class="form-control-wrap">
+                <input id="date" type="date" size="25" name="date" class="form-control"/>
+            </label>
+        </div>
+        <input type="hidden" id="dateUrl" th:value="${dateUrl}">
+    </form>
+
+    <table id="orderItems" class="table table-hover" border="1">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>FullName</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>CMND</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="employee : ${userList}">
+            <tr>
+                <th scope="row" th:text="${employee.id}"></th>
+                <td th:text="${employee.userName}"></td>
+                <td th:text="${employee.phoneNumber}"></td>
+                <td th:text="${employee.email}"></td>
+                <td th:text="${employee.CMND}"></td>
+                <td th:text="${employee.dateVaccine}"></td>
+                <td th:text="${employee.timeVaccine}"></td>
+                <th:block th:if="${employee.checkStatus==0}">
+                    <th:block th:if="${check==0}">
+                        <th:block th:if="${checkTime}==1">
+                            <td class="button">
+                                <button class="btn btn-success"
+                                        th:onclick="'javascript:check('+${employee.id}+','+${pageActive}+')'">Check
+                                </button>
+                            </td>
+                        </th:block>
+                        <th:block th:if="${checkTime}==0">
+                            <td class="button">
+                                <button class="btn btn-success" disabled>Check</button>
+                            </td>
+                        </th:block>
+                    </th:block>
+                    <th:block th:if="${check==1}">
+                        <td class="button">
+                            <button class="btn btn-success" disabled>Check</button>
+                        </td>
+                    </th:block>
+                </th:block>
+                <th:block th:if="${employee.checkStatus==1}">
+                    <th:block th:if="${check==0}">
+                        <th:block th:if="${checkTime}==1">
+                            <td class="button">
+                                <button class="btn btn-danger"
+                                        th:onclick="'javascript:uncheck('+${employee.id}+','+${pageActive}+')'">Uncheck
+                                </button>
+                            </td>
+                        </th:block>
+                        <th:block th:if="${checkTime}==0">
+                            <td class="button">
+                                <button class="btn btn-danger" disabled>Uncheck</button>
+                            </td>
+                        </th:block>
+                    </th:block>
+                    <th:block th:if="${check==1}">
+                        <td class="button">
+                            <button class="btn btn-danger" disabled>Uncheck</button>
+                        </td>
+                    </th:block>
+                </th:block>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+    <input type="hidden" id="checkTime" th:value="${checkTime}">
+    <input type="hidden" id="check" th:value="${check}">
+    <div id="page" class="page" th:if="${list.size()>1}">
+            <span th:each="number: ${list}" th:class="${pageActive==numberStat.index}?active">
+                <a th:href="@{'/doctor/list'(page=${numberStat.index})}" th:text="${numberStat.index + 1}"></a>
+            </span>
+    </div>
+    <th:block th:if="${check}==0">
+        <th:block th:if="${checkTime}==1">
+            <a href="/doctor/setAll"><button class="btn btn-primary">Submit</button></a>
+        </th:block>
+        <th:block th:if="${checkTime}==0">
+            <button class="btn btn-primary" disabled>Submit</button>
+        </th:block>
+    </th:block>
+</div>
+</body>
+</html>

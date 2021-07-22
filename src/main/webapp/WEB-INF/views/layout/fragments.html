@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head  th:fragment="html_head">
+  <meta name="author" content="Trung tâm tiêm chủng VNVC"/>
+  <title>
+    Hệ thống tiêm chủng Vaccine
+  </title>
+  <meta charset="UTF-8"/>
+
+  <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1,user-scalable=no"
+  />
+  <meta
+          name="facebook-domain-verification"
+          content="bm8nm3agri2yoai88dwe9wwnuw2wm6"
+  />
+
+
+  <link rel="stylesheet" id="rs-plugin-settings-css"
+        href="https://vnvc.vn/wp-content/plugins/revslider/public/assets/css/settings.css?ver=5.1.6"
+        type="text/css"
+        media="all"
+  />
+
+  <script type="text/javascript" src="https://vnvc.vn/wp-includes/js/jquery/jquery.js?ver=1.12.4"></script>
+
+  <meta property="og:locale" content="vi_VN"/>
+  <meta property="og:image" content="https://vnvc.vn/wp-content/uploads/2017/07/thumb-v2.jpg"/>
+  <link rel="stylesheet" href="https://vnvc.vn/wp-content/themes/wg/css/font-awesome.min.css"/>
+  <link rel="stylesheet" href="https://vnvc.vn/wp-content/themes/wg/css/flexslider.css"/>
+  <link rel="stylesheet" href="https://vnvc.vn/wp-content/themes/wg/css/menu.css?ver=1565660797"/>
+  <link rel="stylesheet" href="https://vnvc.vn/wp-content/themes/wg/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://vnvc.vn/wp-content/themes/wg/css/style.css?ver=372496924"/>
+  <link href="https://vnvc.vn/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <link rel="preload" href="https://vnvc.vn/wp-content/themes/wg/fonts/MyriadPro-Semibold.otf" as="font" type="font/otf" crossorigin/>
+  <link rel="preload" href="https://vnvc.vn/wp-content/themes/wg/fonts/MyriadPro-SemiboldCond.woff" as="font" type="font/woff" crossorigin/>
+  <link rel="preload" href="https://vnvc.vn/wp-content/themes/wg/fonts/MyriadPro-Regular.woff" as="font" type="font/woff" crossorigin/>
+  <link rel="preload" href="https://vnvc.vn/wp-content/themes/wg/fonts/MyriadPro-Bold.otf" as="font" type="font/otf" crossorigin/>
+  <link rel="preload" href="https://vnvc.vn/wp-content/themes/wg/fonts/fontawesome-webfont.woff2" as="font" type="font/woff2" crossorigin/>
+  <style>
+    header .top-right a {
+      font-family: 'MyriadPro-Bold';
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="banner_header"  th:fragment="body-banner" >
+  <a href="/">
+    <img
+            alt="virus corona 2019"
+            class="img-responsive hidden-xs"
+            src="https://vnvc.vn/wp-content/uploads/2021/06/virus-corona-covid-19-pc.jpg"
+    />
+    <img
+            alt="virus corona 2019"
+            class="img-responsive hidden-sm hidden-md hidden-lg"
+            src="https://vnvc.vn/wp-content/uploads/2021/05/virus-corona-covid-19-mb-top-banner.jpg"
+    />
+  </a>
+</div>
+
+<header id="header" class="header header-desktop"  th:fragment="body-header">
+  <div class="top-bar">
+    <div class="container">
+      <div class="row">
+        <div
+                class="
+                                    col-xs-4 col-sm-3 col-md-2 col-lg-3
+                                    hidden-mobi
+                                "
+        >
+          <a href="https://vnvc.vn" title="">
+            <img
+                    src="https://vnvc.vn/wp-content/uploads/2021/01/logo-02.png"
+                    alt="Logo"
+                    class="img-responsive"
+            />
+          </a>
+        </div>
+        <!--col-lg-4-->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+          <div class="list-inline top-right">
+            <div style="float: right">
+              <ul
+                      id="menu-menu_top"
+                      class="nav navbar-nav">
+                <li
+                        id="menu-item-12887"
+                        class="
+                                                    bg_timtrungtam
+                                                    menu-item
+                                                    menu-item-type-post_type
+                                                    menu-item-object-page
+                                                    menu-item-12887
+                                                "
+                >
+                  <a
+                          href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/"
+                  >Tìm trung tâm</a
+                  >
+                </li>
+                <li
+                        id="menu-item-12888"
+                        class="
+                                                    menu-item
+                                                    menu-item-type-post_type
+                                                    menu-item-object-page
+                                                    menu-item-12888
+                                                "
+                >
+                  <a th:if="${userInfo} == null" title="bg_dangkytiem" href="https://vnvc.vn/dang-ky-thong-tin-tiem-chung/">Đăng ký tiêm</a>
+                  <a  th:if="${userInfo} != null" href="/user" type="button" class="btn btn-outline-primary"
+                      style="color: #941e7c;">Thông tin tiêm chủng</a>
+                </li>
+                <li
+                        id="menu-item-12889"
+                        class="
+                                                    bg_datmuavacxin
+                                                    menu-item
+                                                    menu-item-type-custom
+                                                    menu-item-object-custom
+                                                    menu-item-12889
+                                                "
+                >
+
+                </li>
+
+
+                  >
+                </li>
+                <li
+                        id="menu-item-15480"
+                        class="
+                                                    bg_eplus_icon
+                                                    menu-item
+                                                    menu-item-type-custom
+                                                    menu-item-object-custom
+                                                    menu-item-15480
+                                                "
+                >
+
+                  >
+                </li>
+
+                <li
+
+                        class="
+                                                    menu-item
+                                                    menu-item-type-custom
+                                                    menu-item-object-custom
+                                                    menu-item-15480
+                                                "
+                >
+                  <a  th:if="${userInfo} == null" href="/form" type="button" class="btn btn-outline-primary"
+                     style="color: #941e7c;">Đăng ký</a>
+                  <a  th:if="${userInfo} != null" href="/logout" type="button" class="btn btn-outline-primary"
+                      style="color: #941e7c;">Đăng xuất</a>
+
+                </li>
+
+                <li
+
+                        class="
+                                                menu-item
+                                                menu-item-type-custom
+                                                menu-item-object-custom
+                                                menu-item-15480
+                                            "
+                >
+                  <a  th:if="${userInfo} != null"  href="#" type="button" class="btn btn-outline-primary"
+                     style="color: #941e7c;">Xin chào <span th:text=" ${userInfo} "></span></a>
+
+
+                    <a th:if="${userInfo == null}" href="/login" type="button" class="btn btn-outline-primary"
+                       style="color: #941e7c;">Đăng Nhập</a>
+
+
+
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--top-bar-->
+  <div class="bar-content">
+    <div id="navigation" class="menu-top">
+      <div class="navbar navbar-static-top" role="banner">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="navbar-header">
+                <button
+                        type="button"
+                        class="navbar-toggle"
+                        data-toggle="collapse"
+                        data-target=".navbar-collapse"
+                >
+                                                <span class="sr-only"
+                                                >Toggle navigation</span
+                                                >
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <nav
+                      class="
+                                                collapse
+                                                navbar-collapse navbar-right
+                                            "
+              >
+                <ul
+                        id="menu-menu-header"
+                        class="nav navbar-nav"
+                >
+                  <li
+                          class="
+                                                        menu-item
+                                                        menu-item-type-post_type
+                                                        menu-item-object-page
+                                                        menu-item-home
+                                                        current-menu-item
+                                                        page_item page-item-88
+                                                        current_page_item
+                                                        menu-item-13044
+                                                    "
+                  >
+                    <a>TRANG CHỦ</a>
+                  </li>
+                  <li
+                          class="
+                                                        menu-item
+                                                        menu-item-type-post_type
+                                                        menu-item-object-page
+                                                        menu-item-has-children
+                                                        menu-item-107
+                                                    "
+                  >
+                    <a href="#">GIỚI THIỆU</a>
+                  </li>
+                  <li
+                          class="
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-has-children
+                                                        menu-item-8061
+                                                    "
+                  >
+                    <a href="#"
+                    >TIÊM CHỦNG CHO TRẺ
+                      EM</a
+                    >
+                    <ul class="sub-menu"></ul>
+                  </li>
+                  <li
+                          class="
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-has-children
+                                                        menu-item-8306
+                                                    "
+                  >
+                    <a href="#"
+                    >TIÊM CHỦNG CHO NGƯỜI
+                      LỚN</a
+                    >
+                    <ul class="sub-menu"></ul>
+                  </li>
+
+                  <li
+                          class="
+                                                        menu-item
+                                                        menu-item-type-post_type
+                                                        menu-item-object-page
+                                                        menu-item-has-children
+                                                        menu-item-2034
+                                                    "
+                  >
+                    <a href="#">GÓI TIÊM</a>
+                    <ul class="sub-menu"></ul>
+                  </li>
+
+                  <li
+                          class="
+                                                        menu-item
+                                                        menu-item-type-post_type
+                                                        menu-item-object-page
+                                                        menu-item-has-children
+                                                        menu-item-1972
+                                                    "
+                  >
+                    <a href="#">CẨM NANG</a>
+                    <ul class="sub-menu">
+                      <li class="menu-item menu-item-type-post_type menu-item-object-page
+                                                          menu-item-1424">
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+              <div
+                      class="
+                                                search_icon
+                                                cl_head
+                                                hidden-xs
+                                            "
+                      data-toggle="collapse"
+                      data-target=".navbar-form"
+              >
+
+              </div>
+
+
+              <form
+                      class="navbar-form navbar-left"
+                      role="search"
+                      method="get"
+                      action="https://vnvc.vn"
+              >
+                <div class="form-group">
+                  <div
+                          class="icon-addon addon-sm"
+                  >
+
+
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-sm-12">
+              <div class="hhvg_menu"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--navigation-->
+  </div>
+  <!--bar-content-->
+  <div class="clear"></div>
+</header>
+
+<header id="header-done" class="header header-desktop"  th:fragment="body-header-done">
+  <div class="top-bar">
+    <div class="container">
+      <div class="row">
+        <div
+                class="
+                                    col-xs-4 col-sm-3 col-md-2 col-lg-3
+                                    hidden-mobi
+                                "
+        >
+          <a href="https://vnvc.vn" title="">
+            <img
+                    src="https://vnvc.vn/wp-content/uploads/2021/01/logo-02.png"
+                    alt="Logo"
+                    class="img-responsive"
+            />
+          </a>
+        </div>
+        <!--col-lg-4-->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+          <div class="list-inline top-right">
+            <div style="float: right">
+              <ul
+
+                      class="nav navbar-nav">
+                <li
+
+                        class="
+                                                    bg_timtrungtam
+                                                    menu-item
+                                                    menu-item-type-post_type
+                                                    menu-item-object-page
+                                                    menu-item-12887
+                                                "
+                >
+                  <a
+                          href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/"
+                  >Tìm trung tâm</a
+                  >
+                </li>
+                <li
+
+                        class="
+                                                    menu-item
+                                                    menu-item-type-post_type
+                                                    menu-item-object-page
+                                                    menu-item-12888
+                                                "
+                >
+                  <a
+                          title="bg_dangkytiem"
+                          href="https://vnvc.vn/dang-ky-thong-tin-tiem-chung/"
+                  >Đăng ký tiêm</a
+                  >
+                </li>
+                <li
+
+                        class="
+                                                    bg_datmuavacxin
+                                                    menu-item
+                                                    menu-item-type-custom
+                                                    menu-item-object-custom
+                                                    menu-item-12889
+                                                "
+                >
+                  <a
+                          target="_blank"
+                          href="https://vax.vnvc.vn/?utm_source=header_button&#038;utm_medium=vnvc_website&#038;utm_campaign=vax_register"
+                  >ĐẶT MUA VẮC XIN</a
+                  >
+                </li>
+                <li
+
+                        class="
+                                                    bg_tuvan
+                                                    menu-item
+                                                    menu-item-type-post_type
+                                                    menu-item-object-page
+                                                    menu-item-14693
+                                                "
+                >
+                  <a
+                          href="https://vnvc.vn/cau-hoi-tu-van/"
+                  >Tư vấn</a
+                  >
+                </li>
+                <li
+
+                        class="
+                                                    bg_eplus_icon
+                                                    menu-item
+                                                    menu-item-type-custom
+                                                    menu-item-object-custom
+                                                    menu-item-15480
+                                                "
+                >
+
+                </li>
+
+                <li
+
+                        class="
+                                                    menu-item
+                                                    menu-item-type-custom
+                                                    menu-item-object-custom
+                                                    menu-item-15480
+                                                "
+                >
+
+                </li>
+
+                <li
+
+                        class="
+                                                menu-item
+                                                menu-item-type-custom
+                                                menu-item-object-custom
+                                                menu-item-15480
+                                            "
+                >
+                  <a href="/logout" type="button" class="btn btn-outline-primary"
+                     style="color: #941e7c;">Đăng xuất</a>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--top-bar-->
+  <div class="bar-content">
+    <div  class="menu-top">
+      <div class="navbar navbar-static-top" role="banner">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="navbar-header">
+                <button
+                        type="button"
+                        class="navbar-toggle"
+                        data-toggle="collapse"
+                        data-target=".navbar-collapse"
+                >
+                                                <span class="sr-only"
+                                                >Toggle navigation</span
+                                                >
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <nav
+                      class="
+                                                collapse
+                                                navbar-collapse navbar-right
+                                            "
+              >
+                <ul
+
+                        class="nav navbar-nav"
+                >
+                  <li
+                          class="
+                                                        menu-item
+                                                        menu-item-type-post_type
+                                                        menu-item-object-page
+                                                        menu-item-home
+                                                        current-menu-item
+                                                        page_item page-item-88
+                                                        current_page_item
+                                                        menu-item-13044
+                                                    "
+                  >
+                    <a>TRANG CHỦ</a>
+                  </li>
+                  <li
+                          class="
+                                                        menu-item
+                                                        menu-item-type-post_type
+                                                        menu-item-object-page
+                                                        menu-item-has-children
+                                                        menu-item-107
+                                                    "
+                  >
+                    <a href="#">GIỚI THIỆU</a>
+                  </li>
+                  <li
+                          class="
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-has-children
+                                                        menu-item-8061
+                                                    "
+                  >
+                    <a href="#"
+                    >TIÊM CHỦNG CHO TRẺ
+                      EM</a
+                    >
+                    <ul class="sub-menu"></ul>
+                  </li>
+                  <li
+                          class="
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-has-children
+                                                        menu-item-8306
+                                                    "
+                  >
+                    <a href="#"
+                    >TIÊM CHỦNG CHO NGƯỜI
+                      LỚN</a
+                    >
+                    <ul class="sub-menu"></ul>
+                  </li>
+
+                  <li
+                          class="
+                                                        menu-item
+                                                        menu-item-type-post_type
+                                                        menu-item-object-page
+                                                        menu-item-has-children
+                                                        menu-item-2034
+                                                    "
+                  >
+                    <a href="#">GÓI TIÊM</a>
+                    <ul class="sub-menu"></ul>
+                  </li>
+
+                  <li
+                          class="
+                                                        menu-item
+                                                        menu-item-type-post_type
+                                                        menu-item-object-page
+                                                        menu-item-has-children
+                                                        menu-item-1972
+                                                    "
+                  >
+                    <a href="#">CẨM NANG</a>
+                    <ul class="sub-menu">
+                      <li class="menu-item menu-item-type-post_type menu-item-object-page
+                                                          menu-item-1424">
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+              <div
+                      class="
+                                                search_icon
+                                                cl_head
+                                                hidden-xs
+                                            "
+                      data-toggle="collapse"
+                      data-target=".navbar-form"
+              >
+
+              </div>
+
+
+              <form
+                      class="navbar-form navbar-left"
+                      role="search"
+                      method="get"
+                      action="https://vnvc.vn"
+              >
+                <div class="form-group">
+                  <div
+                          class="icon-addon addon-sm"
+                  >
+
+
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-sm-12">
+              <div class="hhvg_menu"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--navigation-->
+  </div>
+  <!--bar-content-->
+  <div class="clear"></div>
+</header>
+
+<footer id="footer"  th:fragment="body-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">
+        <a href="https://vnvc.vn" title="">
+          <img
+                  src="https://vnvc.vn/wp-content/uploads/2017/04/logo.png"
+                  alt="Logo"
+                  class="img-responsive"
+          />
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-3 text-center">
+        <a
+                class="
+                                    title_httc_footter
+                                    lienhe_footer lienhe_footer_nxv
+                                "
+                href="https://vnvc.vn/lien-he/"
+        >LIÊN HỆ</a
+        >
+      </div>
+      <div class="col-xs-12 col-sm-3 text-center">
+        <a
+                href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/"
+                class="item_ttt_footter"
+        >
+          TÌM TRUNG TÂM</a
+        >
+      </div>
+      <div
+              class="
+                                col-xs-12 col-sm-3
+                                text-center
+                                item_div
+                                bottom_hotline
+                            "
+      >
+        <div>
+          <img
+                  src="https://vnvc.vn/wp-content/themes/wg/images/i-phone-red.png"
+                  class="img-responsive hidden-sm"
+          />
+          <span class="text-trang">Hotline:</span
+          ><a href="tel:+842873006595"
+        ><span class="text-cam">
+                                        028 7300 6595</span
+        ></a
+        >
+        </div>
+        <div class="tg_lamviec">
+          <p>
+                                    <span style="color: #ffffff"
+                                    >Thời gian làm việc: Từ thứ 2 đến chủ
+                                        nhật</span
+                                    >
+          </p>
+          <p>Từ 7h30 – 17h00 (không nghỉ trưa)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="clear"></div>
+    <div class="row">
+      <div class="col-sm-4 col-lg-3">
+        <div class="hethongtrungtamtinhthanh">
+          <div class="row">
+            <div
+                    class="
+                                            lable_tinhthanhtrungtam
+                                            col-xs-12
+                                        "
+            >
+              Hệ thống Miền Bắc
+            </div>
+            <div
+                    class="
+                                            col-xs-10
+                                            col-xs-offset-2
+                                            col-sm-12
+                                            col-sm-offset-0
+                                        "
+            >
+              <div class="row">
+                <ul
+                        id="menu-he-thong-trung-tam-mien-bac"
+                        class="
+                                                    menu_footer_httt_mienbac
+                                                    menuhethong_footer
+                                                "
+                >
+                  <li
+                          id="menu-item-11331"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11331
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=bac-giang"
+                    >Bắc Giang</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11332"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11332
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=bac-ninh"
+                    >Bắc Ninh</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11316"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11316
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=ha-noi"
+                    >Hà Nội</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11333"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11333
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=nam-dinh"
+                    >Nam Định</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11335"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11335
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=ninh-binh"
+                    >Ninh Bình</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11336"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11336
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=phu-tho"
+                    >Phú Thọ</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11337"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11337
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=quang-ninh"
+                    >Quảng Ninh</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11338"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11338
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=thai-nguyen"
+                    >Thái Nguyên</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11340"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11340
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=vinh-phuc"
+                    >Vĩnh Phúc</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-12067"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-12067
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=hung-yen"
+                    >Hưng Yên</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-12741"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-12741
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=hai-phong"
+                    >Hải Phòng</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-15233"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-15233
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=yen-bai"
+                    >Yên Bái</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-lg-3 col-lg-offset-2">
+        <div class="hethongtrungtamtinhthanh">
+          <div class="row">
+            <div
+                    class="
+                                            lable_tinhthanhtrungtam
+                                            col-xs-12
+                                        "
+            >
+              Hệ thống Miền Trung
+            </div>
+            <div
+                    class="
+                                            col-xs-10
+                                            col-xs-offset-2
+                                            col-sm-12
+                                            col-sm-offset-0
+                                        "
+            >
+              <div class="row">
+                <ul
+                        id="menu-he-thong-trung-tam-mien-trung"
+                        class="
+                                                    menu_footer_httt_mientrung
+                                                    menuhethong_footer
+                                                "
+                >
+                  <li
+                          id="menu-item-11341"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11341
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=dak-lak"
+                    >Đắk Lắk</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11343"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11343
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=gia-lai"
+                    >Gia Lai</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11344"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11344
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=da-nang"
+                    >Đà Nẵng</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11345"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11345
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=khanh-hoa"
+                    >Khánh Hòa</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11346"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11346
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=quang-ngai"
+                    >Quảng Ngãi</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11664"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11664
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=quang-nam"
+                    >Quảng Nam</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11888"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11888
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=quy-nhon"
+                    >Bình Định</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11342"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11342
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=thua-thien-hue"
+                    >Thừa Thiên Huế</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-13126"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-13126
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=nghe-an"
+                    >Nghệ An</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-13127"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-13127
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=thanh-hoa"
+                    >Thanh Hóa</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-13128"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-13128
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=ha-tinh"
+                    >Hà Tĩnh</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-14768"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-14768
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=dong-hoi"
+                    >Đồng Hới</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-lg-3 col-lg-offset-1">
+        <div class="hethongtrungtamtinhthanh">
+          <div class="row">
+            <div
+                    class="
+                                            lable_tinhthanhtrungtam
+                                            col-xs-12
+                                        "
+            >
+              Hệ thống Miền Nam
+            </div>
+            <div
+                    class="
+                                            col-xs-10
+                                            col-xs-offset-2
+                                            col-sm-12
+                                            col-sm-offset-0
+                                        "
+            >
+              <div class="row">
+                <ul
+                        id="menu-he-thong-trung-tam-mien-nam"
+                        class="
+                                                    menu_footer_httt_miennam
+                                                    menuhethong_footer
+                                                "
+                >
+                  <li
+                          id="menu-item-11347"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11347
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=an-giang"
+                    >An Giang</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11349"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11349
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=binh-duong"
+                    >Bình Dương</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11350"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11350
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=can-tho"
+                    >Cần Thơ</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11351"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-has-children
+                                                        menu-item-11351
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=dong-nai"
+                    >Đồng Nai</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11353"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11353
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=kien-giang"
+                    >Kiên Giang</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11354"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11354
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=long-an"
+                    >Long An</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11355"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11355
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=tien-giang"
+                    >Tiền Giang</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11352"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11352
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=ho-chi-minh"
+                    >Hồ Chí Minh</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-14481"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-14481
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=ben-tre"
+                    >Bến Tre</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-14588"
+                          class="
+                                                        col-xs-6 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-14588
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=vinh-long"
+                    >Vĩnh Long</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-15231"
+                          class="
+                                                        col-xs-12 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-15231
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=ca-mau"
+                    >Cà Mau</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-15574"
+                          class="
+                                                        col-xs-12 col-sm-6
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-15574
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=binh-phuoc"
+                    >Bình Phước</a
+                    >
+                  </li>
+                  <li
+                          id="menu-item-11348"
+                          class="
+                                                        col-xs-12 col-sm-12
+                                                        menu-item
+                                                        menu-item-type-custom
+                                                        menu-item-object-custom
+                                                        menu-item-11348
+                                                    "
+                  >
+                    <a
+                            href="https://vnvc.vn/he-thong-trung-tam-tiem-chung/?province=ba-ria-vung-tau"
+                    >Bà Rịa &#8211; Vũng
+                      Tàu</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="div_csbm" style="font-size: 12px">
+      <div
+              style="
+                                border-bottom: 1px solid #fff;
+                                width: 100%;
+                                height: 1px;
+                                margin: 15px 0 25px;
+                                opacity: 0.5;
+                            "
+      ></div>
+      <div class="row">
+        <div class="col-sm-8">
+          CÔNG TY CỔ PHẦN VACXIN VIỆT NAM<br/>
+          Giấy chứng nhận ĐKKD số 0107631488 do sở Kế
+          hoạch và Đầu tư TP. Hà Nội cấp ngày
+          11/11/2016<br/>
+          Địa chỉ: 180 Trường Chinh, P. Khương Thượng, Q.
+          Đống Đa,Tp. Hà Nội<br/>
+          Mail: cskh@vnvc.vn<br/>
+        </div>
+        <div class="col-sm-4">
+          <a
+                  class="title_httc_footter lienhe_footer"
+                  href="https://vnvc.vn/chinh-sach-bao-mat-thong-tin/"
+          >CHÍNH SÁCH BẢO MẬT</a
+          ><br/>
+          Bản quyền © 2016 thuộc về
+          <span class="small"
+          >CÔNG TY CỔ PHẦN VACXIN VIỆT NAM</span
+          >
+          <br/><a
+                target="_blank"
+                rel="nofollow"
+                href="//www.dmca.com/Protection/Status.aspx?ID=ce267d6f-3c89-482c-b52d-d9a2c36ef544"
+                title="DMCA.com Protection Status"
+                class="dmca-badge"
+        >
+          <img
+                  src="https://images.dmca.com/Badges/dmca-badge-w100-5x1-10.png?ID=ce267d6f-3c89-482c-b52d-d9a2c36ef544"
+                  alt="DMCA.com Protection Status"
+          /></a>
+          <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
+          <a
+                  target="_blank"
+                  style="
+                                        max-width: 110px;
+                                        display: inline-block;
+                                    "
+                  href="http://www.online.gov.vn/CustomWebsiteDisplay.aspx?DocId=47914"
+                  rel="nofollow"
+          ><img
+                  class="img-responsive"
+                  src="https://vnvc.vn/img/dathongbao.png"
+          />
+          </a>
+        </div>
+      </div>
+      <br clear="all"/>
+    </div>
+  </div>
+  <a class="divs_hotline hidden" href="tel:02873006595"
+  >Hotline: 028 7300 6595<span></span
+  ></a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="demodeploy:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>demodeploy</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="test.war">
+      <element id="artifact" artifact-name="demodeploy:war exploded" />
+    </root>
+  </artifact>
+</component>

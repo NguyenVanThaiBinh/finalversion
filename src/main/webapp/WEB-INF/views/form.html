@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Form Vaccine</title>
+
+    <link rel="stylesheet" type="text/css" href="../../template/css/bootstrap.css">
+    <script src="../../template/js/jquery-3.6.0.min.js"></script>
+    <script src="../../template/js/jquery.validate-1.19.3.min.js"></script>
+    <script rel="stylesheet" type="text/javascript" src="../../template/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href=/template/css/cssform.css>
+    <link href="https://vnvc.vn/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <style>
+        .create{
+            padding: 1em;
+            font-style: italic;
+            text-align: center;
+            font-size: 2em;
+            color: #dc3545;
+            font-weight: bold;
+            -webkit-animation: cssAnimation 6s forwards;
+            animation: cssAnimation 10s forwards;
+        }
+        @keyframes cssAnimation {
+            0%   {opacity: 1;}
+            90%  {opacity: 1;}
+            100% {opacity: 0;}
+        }
+        @-webkit-keyframes cssAnimation {
+            0%   {opacity: 1;}
+            90%  {opacity: 1;}
+            100% {opacity: 0;}
+        }
+    </style>
+
+</head>
+<body>
+<a href="/">
+        <img alt="virus corona 2019" style="max-width: 100%"
+                src="https://vnvc.vn/wp-content/uploads/2021/06/virus-corona-covid-19-pc.jpg"/>
+
+</a>
+    <br>
+
+    <div class="container">
+        <div class="create"
+             th:if="${createDone} != null" th:text="${createDone}" ></div>
+        <div class="create"
+             th:if="${fail} != null" th:text="${fail}" ></div>
+        <h2>ĐĂNG KÝ TIÊM CHỦNG</h2>
+    <div class="row">
+        <div class="main-content col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <form class="form_vaccine" action="/create" method="post" th:object="${user}">
+                <div class="row">
+                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="label">Họ và Tên:</label>
+                        <span class="form-control-wrap"><input type="text" th:field="*{userName}" size="40"
+                                                               name="userName" class="form-control"/></span>
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="label">Chứng minh nhân dân</label>
+                        <span class="form-control-wrap"><input type="number" th:field="*{CMND}" size="40"
+                                                               name="CMND" class="form-control"/></span>
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="label">Mật khẩu</label>
+                        <span class="form-control-wrap"><input type="password" th:field="*{password}" size="40"
+                                                               id="password" name="password"
+                                                               class="form-control"/></span>
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="label">Nhập lại mật khẩu</label>
+                        <span class="form-control-wrap"><input type="password" name="userPass2" size="40"
+                                                               class="form-control"/></span>
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="label">Số điện thoại</label>
+                        <span class="form-control-wrap"><input type="number" th:field="*{phoneNumber}" size="40"
+                                                               name="phoneNumber" class="form-control"/></span>
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="label">Email</label>
+                        <span class="form-control-wrap"><input type="email" th:field="*{email}" size="40"
+                                                               name="email" class="form-control"/></span>
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6 col-xs-12 address">
+                        <div class="form-group col-md-2 col-sm-4 col-xs-12">
+                            <label class="label">Địa chỉ</label>
+                            <select disabled class="form-control" id="province" name="userProvince"
+                                    onchange="changeFunc();">
+                                <optgroup>
+                                    <option value="" selected></option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-5 col-sm-4 col-xs-12">
+                            <label class="label"></label>
+                            <select class="form-control form-select" name="district" id="district"
+                                    th:field="*{district}"
+                                    onchange="changeFuncDistrict();">
+                                <optgroup>
+                                    <option value="" selected>Quận huyện</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-5 col-sm-4 col-xs-12">
+                            <label class="label"></label>
+                            <select class="form-control form-select" name="ward" id="ward" th:field="*{commune}">
+                                <optgroup>
+                                    <option value="" selected>Phường xã</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group col-md-3 col-sm-4 col-xs-4">
+                            <label class="label">Ngày sinh</label>
+                            <select class="form-control dob form-select" id="day" style="width: 82px;"></select>
+                        </div>
+                        <div class="form-group col-md-3 col-sm-4 col-xs-4">
+                            <label class="label"></label>
+                            <select class="form-control dob form-select" id="month" style="width: 82px;"></select>
+                        </div>
+                        <div class="form-group col-md-3 col-sm-4 col-xs-4">
+                            <label class="label"></label>
+                            <select class="form-control dob form-select" id="year" th:field="*{age}"
+                                    style="width: 82px;"></select>
+                        </div>
+                        <div class="form-group col-md-3 col-sm-4 col-xs-12">
+                            <label class="label">Giới tính</label>
+                            <select class="form-control form-select" id="gender"  th:field="*{gender}">
+                                <option value="Nam" >Nam</option>
+                                <option value="Nữ" onclick="getMan()" >Nữ</option>
+                                <option value="Khác">Khác</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="form-group col-md-6 col-sm-4 col-xs-12">
+                        <label class="label">Điểm Tiêm</label>
+                        <select class="form-control form-select" id="destination" th:field="*{adminDestination}">
+                            <option th:each="de:${destinations}"
+                                    th:value="${de.getId()}"
+                                    th:text="${de.getNameDestination()}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <label class="label">Tình hình sức khỏe và Tiền sử bệnh án</label><br><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                   value="Bệnh về tim mạch" th:field="*{healthyStatus}">
+                            <label class="form-check-label" for="inlineCheckbox1">Bệnh về tim mạch</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Bệnh về hô hấp"
+                                   th:field="*{healthyStatus}">
+                            <label class="form-check-label" for="inlineCheckbox2">Bệnh về hô hấp</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
+                                   value="Bệnh về thần kinh" th:field="*{healthyStatus}">
+                            <label class="form-check-label" for="inlineCheckbox3">Bệnh về thần kinh</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox4"
+                                   value="Tiểu đường hoặc ung thư" th:field="*{healthyStatus}">
+                            <label class="form-check-label" for="inlineCheckbox4">Tiểu đường hoặc ung thư</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox5"
+                                   value="Phụ nữ đang mang thai hoặc cho con bú" th:field="*{healthyStatus}">
+                            <label class="form-check-label" for="inlineCheckbox5">Phụ nữ đang mang thai hoặc cho con
+                                bú</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox6"
+                                   value="Các bệnh lý về xương khớp" th:field="*{healthyStatus}">
+                            <label class="form-check-label" for="inlineCheckbox6">Các bệnh lý về xương khớp</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col"><button class="btn btn-info" type="submit">ĐĂNG KÝ</button> </div>
+                    <div class="col "  ><a  href="/login" class="btn btn-primary" id="login-now" role="button">ĐĂNG NHẬP NGAY!</a></div>
+                </div>
+
+
+            </form>
+            <br><br>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../../template/js/form.js"></script>
+<script type="text/javascript" src="../../template/js/form-vaccine-validate.js"></script>
+<script>
+
+
+    if ("Nam" === $("#gender option:selected").val()){
+        $("#inlineCheckbox5").attr("disabled", true);
+    }
+    $('#gender').on('change', function () {
+        if ("Nam" === $("#gender option:selected").val()){
+            $("#inlineCheckbox5").attr("disabled", true);
+        }
+        if ("Nữ" === $("#gender option:selected").val()){
+            $("#inlineCheckbox5").attr("disabled", false);
+        }
+    });
+
+</script>
+</body>
+</html>

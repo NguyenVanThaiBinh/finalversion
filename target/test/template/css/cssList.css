@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+body{
+    min-height: 100vh;
+    width: 100%;
+    background-color: #006699;
+}
+.container{
+    width: 1100px;
+    background-color: #fff;
+    padding: 50px  30px;
+    color: #006699;
+}
+h2{
+    margin-bottom: 50px !important;
+    text-align: center;
+    color: #006699;
+    font-weight: 600;
+    font-size: 30px;
+}
+table tr th{
+    color: #006699;
+}
+table tr td a{
+    text-decoration: unset;
+    color: unset;
+}
+table tr td button{
+    font-size: 12px !important;
+}
+.button{
+    width: 150px !important;
+}
+.page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.page a{
+    text-decoration: none;
+    color: #006699;
+    font-weight: 400;
+}
+.page span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    border: 2px solid #006699;
+    margin: 0 5px;
+}
+.page .active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    border: 2px solid #006699;
+    margin: 0 5px;
+    background-color: #006699;
+}
+.page .active a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: 400;
+}

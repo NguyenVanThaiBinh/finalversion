@@ -1,0 +1,725 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/header::header">
+
+</head>
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0">
+        <div>
+            <a href="https://vnvc.vn/virus-corona-2019/">
+                <img style="width: 100%"
+                     alt="virus corona 2019"
+                     class="img-responsive hidden-xs"
+                     src="https://vnvc.vn/wp-content/uploads/2021/06/virus-corona-covid-19-pc.jpg"
+                />
+            </a>
+        </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <a href="/logout"><button class="btn btn-primary buttonout">Đăng xuất</button></a>
+        <div class="row row-offcanvas row-offcanvas-right">
+            <!-- partial:partials/_settings-panel.html -->
+            <!-- partial -->
+            <!-- partial:partials/_sidebar.html -->
+            <footer th:replace="/layout/footer::footer">
+
+            </footer>
+            <!-- partial -->
+            <div class="content-wrapper">
+                <div class="row">
+                    <div
+                            class="
+                                    col-md-6 col-lg-3
+                                    grid-margin
+                                    stretch-card
+                                "
+                    >
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-md-center">
+                                    <i class=" mdi mdi-basket icon-lg text-primary "></i>
+                                    <div class="ml-3">
+                                        <p class="mb-0">Số Lượng khách hàng đã được tiêm chủng</p>
+                                        <h6 id="amount1"></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-md-center ">
+                                    <i class=" mdi mdi-rocket icon-lg text-primary"></i>
+                                    <div class="ml-3">
+                                        <p class="mb-0">Số lượng khách hàng đã đăng kí tiêm chủng</p>
+                                        <h6 id="amount2"></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-md-center">
+                                    <i class="mdi mdi-diamond icon-lg text-primary"></i>
+                                    <div class="ml-3">
+                                        <p class="mb-0">
+                                            Tổng số lượt tiêm trong ngày</p>
+                                        <h6 id="amount3"></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-md-6 col-lg-3 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-md-center">
+                                    <i class="mdi mdi-chart-line-stacked icon-lg text-primary"></i>
+                                    <div class="ml-3">
+                                        <p class="mb-0">
+                                            Số ca biến chứng với vaccine
+                                        </p>
+                                        <h6 id="amount4"></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row grid-margin">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Order status</h6>
+                                <div class="d-flex table-responsive">
+                                    <div class="btn-group mr-2">
+                                        <button
+                                                class="btn btn-primary"
+                                        >
+                                            <i
+                                                    class="
+                                                            mdi
+                                                            mdi-plus-circle-outline
+                                                        "
+                                            ></i>
+                                            Add
+                                        </button>
+                                    </div>
+                                    <div class="btn-group mr-2">
+                                        <button
+                                                type="button"
+                                                class="btn btn-light"
+                                        >
+                                            <i
+                                                    class="
+                                                            mdi
+                                                            mdi-alert-circle-outline
+                                                        "
+                                            ></i>
+                                        </button>
+                                        <button
+                                                type="button"
+                                                class="btn btn-light"
+                                        >
+                                            <i
+                                                    class="
+                                                            mdi mdi-delete-empty
+                                                        "
+                                            ></i>
+                                        </button>
+                                    </div>
+                                    <div class="btn-group mr-2">
+                                        <button
+                                                type="button"
+                                                class="btn btn-light"
+                                        >
+                                            <i
+                                                    class="mdi mdi-printer"
+                                            ></i>
+                                        </button>
+                                    </div>
+                                    <div
+                                            class="
+                                                    btn-group
+                                                    ml-auto
+                                                    mr-2
+                                                    border-0
+                                                "
+                                    >
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Search Here"
+                                        />
+                                    </div>
+                                    <div class="btn-group">
+                                        <button
+                                                type="button"
+                                                class="btn btn-light"
+                                        >
+                                            <i
+                                                    class="mdi mdi-cloud"
+                                            ></i>
+                                        </button>
+                                        <button
+                                                type="button"
+                                                class="btn btn-light"
+                                        >
+                                            <i
+                                                    class="
+                                                            mdi
+                                                            mdi-dots-vertical
+                                                        "
+                                            ></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table
+                                            class="table mt-3 border-top"
+                                    >
+                                        <thead>
+                                        <tr>
+                                            <th>Invoice</th>
+                                            <th>Customer</th>
+                                            <th>Ship</th>
+                                            <th>Best Price</th>
+                                            <th>Purchsed Price</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>50014</td>
+                                            <td>David Grey</td>
+                                            <td>Italy</td>
+                                            <td>$6300</td>
+                                            <td>$2100</td>
+                                            <td>
+                                                <div
+                                                        class="
+                                                                    badge
+                                                                    badge-success
+                                                                    badge-fw
+                                                                "
+                                                >
+                                                    Progress
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>50015</td>
+                                            <td>Stella Johnson</td>
+                                            <td>Brazil</td>
+                                            <td>$4500</td>
+                                            <td>$4300</td>
+                                            <td>
+                                                <div
+                                                        class="
+                                                                    badge
+                                                                    badge-warning
+                                                                    badge-fw
+                                                                "
+                                                >
+                                                    Open
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>50016</td>
+                                            <td>Marina Michel</td>
+                                            <td>Japan</td>
+                                            <td>$4300</td>
+                                            <td>$6440</td>
+                                            <td>
+                                                <div
+                                                        class="
+                                                                    badge
+                                                                    badge-danger
+                                                                    badge-fw
+                                                                "
+                                                >
+                                                    On hold
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>50017</td>
+                                            <td>John Doe</td>
+                                            <td>India</td>
+                                            <td>$6400</td>
+                                            <td>$2200</td>
+                                            <td>
+                                                <div
+                                                        class="
+                                                                    badge
+                                                                    badge-success
+                                                                    badge-fw
+                                                                "
+                                                >
+                                                    Progress
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div
+                                        class="
+                                                d-flex
+                                                align-items-center
+                                                justify-content-between
+                                                flex-column flex-sm-row
+                                                mt-4
+                                            "
+                                >
+                                    <p class="mb-3 mb-sm-0">
+                                        Showing 1 to 20 of 20 entries
+                                    </p>
+                                    <nav>
+                                        <ul
+                                                class="
+                                                        pagination
+                                                        pagination-info
+                                                        mb-0
+                                                    "
+                                        >
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                ><i
+                                                        class="
+                                                                    mdi
+                                                                    mdi-chevron-left
+                                                                "
+                                                ></i
+                                                ></a>
+                                            </li>
+                                            <li
+                                                    class="page-item active"
+                                            >
+                                                <a class="page-link"
+                                                >1</a
+                                                >
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                >2</a
+                                                >
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                >3</a
+                                                >
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                >4</a
+                                                >
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                ><i
+                                                        class="
+                                                                    mdi
+                                                                    mdi-chevron-right
+                                                                "
+                                                ></i
+                                                ></a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 stretch-card">
+                        <div class="row flex-grow">
+                            <div
+                                    class="col-12 grid-margin stretch-card"
+                            >
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="card-title mb-0">
+                                            Statistics
+                                        </h6>
+                                        <div
+                                                class="
+                                                        d-flex
+                                                        justify-content-between
+                                                        align-items-center
+                                                    "
+                                        >
+                                            <div
+                                                    class="
+                                                            d-inline-block
+                                                            pt-3
+                                                        "
+                                            >
+                                                <div class="d-lg-flex">
+                                                    <h2 class="mb-0">
+                                                        $10,200
+                                                    </h2>
+                                                    <div
+                                                            class="
+                                                                    d-flex
+                                                                    align-items-center
+                                                                    ml-lg-2
+                                                                "
+                                                    >
+                                                        <i
+                                                                class="
+                                                                        mdi
+                                                                        mdi-clock
+                                                                        text-muted
+                                                                    "
+                                                        ></i>
+                                                        <small
+                                                                class="
+                                                                        ml-1
+                                                                        mb-0
+                                                                    "
+                                                        >Updated:
+                                                            9:10am</small
+                                                        >
+                                                    </div>
+                                                </div>
+                                                <small class="text-gray"
+                                                >Raised from 89
+                                                    orders.</small
+                                                >
+                                            </div>
+                                            <div class="d-inline-block">
+                                                <div
+                                                        class="
+                                                                bg-success
+                                                                px-3 px-md-4
+                                                                py-2
+                                                                rounded
+                                                            "
+                                                >
+                                                    <i
+                                                            class="
+                                                                    mdi
+                                                                    mdi-buffer
+                                                                    text-white
+                                                                    icon-lg
+                                                                "
+                                                    ></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                    class="col-12 grid-margin stretch-card"
+                            >
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="card-title mb-0">
+                                            Daily Order
+                                        </h6>
+                                        <div
+                                                class="
+                                                        d-flex
+                                                        justify-content-between
+                                                        align-items-center
+                                                    "
+                                        >
+                                            <div
+                                                    class="
+                                                            d-inline-block
+                                                            pt-3
+                                                        "
+                                            >
+                                                <div class="d-lg-flex">
+                                                    <h2 class="mb-0">
+                                                        $2256
+                                                    </h2>
+                                                    <div
+                                                            class="
+                                                                    d-flex
+                                                                    align-items-center
+                                                                    ml-lg-2
+                                                                "
+                                                    >
+                                                        <i
+                                                                class="
+                                                                        mdi
+                                                                        mdi-clock
+                                                                        text-muted
+                                                                    "
+                                                        ></i>
+                                                        <small
+                                                                class="
+                                                                        ml-1
+                                                                        mb-0
+                                                                    "
+                                                        >Updated:
+                                                            05:42pm</small
+                                                        >
+                                                    </div>
+                                                </div>
+                                                <small class="text-gray"
+                                                >hey, let’s have
+                                                    lunch
+                                                    together</small
+                                                >
+                                            </div>
+                                            <div class="d-inline-block">
+                                                <div
+                                                        class="
+                                                                bg-warning
+                                                                px-3 px-md-4
+                                                                py-2
+                                                                rounded
+                                                            "
+                                                >
+                                                    <i
+                                                            class="
+                                                                    mdi
+                                                                    mdi-wallet
+                                                                    text-white
+                                                                    icon-lg
+                                                                "
+                                                    ></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 stretch-card">
+                        <div class="row flex-grow">
+                            <div
+                                    class="col-12 grid-margin stretch-card"
+                            >
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="card-title mb-0">
+                                            Statistics
+                                        </h6>
+                                        <div
+                                                class="
+                                                        d-flex
+                                                        justify-content-between
+                                                        align-items-center
+                                                    "
+                                        >
+                                            <div
+                                                    class="
+                                                            d-inline-block
+                                                            pt-3
+                                                        "
+                                            >
+                                                <div class="d-lg-flex">
+                                                    <h2 class="mb-0">
+                                                        $10,200
+                                                    </h2>
+                                                    <div
+                                                            class="
+                                                                    d-flex
+                                                                    align-items-center
+                                                                    ml-lg-2
+                                                                "
+                                                    >
+                                                        <i
+                                                                class="
+                                                                        mdi
+                                                                        mdi-clock
+                                                                        text-muted
+                                                                    "
+                                                        ></i>
+                                                        <small
+                                                                class="
+                                                                        ml-1
+                                                                        mb-0
+                                                                    "
+                                                        >Updated:
+                                                            9:10am</small
+                                                        >
+                                                    </div>
+                                                </div>
+                                                <small class="text-gray"
+                                                >Raised from 89
+                                                    orders.</small
+                                                >
+                                            </div>
+                                            <div class="d-inline-block">
+                                                <div
+                                                        class="
+                                                                bg-success
+                                                                px-3 px-md-4
+                                                                py-2
+                                                                rounded
+                                                            "
+                                                >
+                                                    <i
+                                                            class="
+                                                                    mdi
+                                                                    mdi-buffer
+                                                                    text-white
+                                                                    icon-lg
+                                                                "
+                                                    ></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                    class="col-12 grid-margin stretch-card"
+                            >
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="card-title mb-0">
+                                            Daily Order
+                                        </h6>
+                                        <div
+                                                class="
+                                                        d-flex
+                                                        justify-content-between
+                                                        align-items-center
+                                                    "
+                                        >
+                                            <div
+                                                    class="
+                                                            d-inline-block
+                                                            pt-3
+                                                        "
+                                            >
+                                                <div class="d-lg-flex">
+                                                    <h2 class="mb-0">
+                                                        $2256
+                                                    </h2>
+                                                    <div
+                                                            class="
+                                                                    d-flex
+                                                                    align-items-center
+                                                                    ml-lg-2
+                                                                "
+                                                    >
+                                                        <i
+                                                                class="
+                                                                        mdi
+                                                                        mdi-clock
+                                                                        text-muted
+                                                                    "
+                                                        ></i>
+                                                        <small
+                                                                class="
+                                                                        ml-1
+                                                                        mb-0
+                                                                    "
+                                                        >Updated:
+                                                            05:42pm</small
+                                                        >
+                                                    </div>
+                                                </div>
+                                                <small class="text-gray"
+                                                >hey, let’s have
+                                                    lunch
+                                                    together</small
+                                                >
+                                            </div>
+                                            <div class="d-inline-block">
+                                                <div
+                                                        class="
+                                                                bg-warning
+                                                                px-3 px-md-4
+                                                                py-2
+                                                                rounded
+                                                            "
+                                                >
+                                                    <i
+                                                            class="
+                                                                    mdi
+                                                                    mdi-wallet
+                                                                    text-white
+                                                                    icon-lg
+                                                                "
+                                                    ></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- partial:partials/_footer.html -->
+                <footer class="footer">
+                    <div class="container-fluid clearfix">
+                                <span
+                                        class="
+                                        text-muted
+                                        d-block
+                                        text-center text-sm-left
+                                        d-sm-inline-block
+                                    "
+                                >Copyright © 2017 <a href="#">UrbanUI</a>.
+                                    All rights reserved.</span
+                                >
+                        <span
+                                class="
+                                        float-none float-sm-right
+                                        d-block
+                                        mt-1 mt-sm-0
+                                        text-center
+                                    "
+                        >Hand-crafted & made with
+                                    <i class="mdi mdi-heart text-danger"></i
+                                    ></span>
+                    </div>
+                </footer>
+                <!-- partial -->
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- row-offcanvas ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<script src="../../../template/js/jquery-3.6.0.min.js"></script>
+<script>
+    function foo(){
+        $.ajax({
+            type:'GET',
+            url:'/doctor/fullApiUser',
+            success:function (data){
+                let count =0;
+                for(let i = 0 ; i<data.length;i++){
+                    if(data[i].checkStatus==1){
+                        count++;
+                    }
+                }
+                $('#amount1').html(count);
+                $('#amount2').html(data.length);
+            }
+        })
+        $.ajax({
+            type: 'GET',
+            url: '/doctor/apiDateTime',
+            success:function (data){
+                $('#amount3').html(data.people_per_hour*4)
+            }
+        })
+    }
+    foo();
+    setInterval(foo,7000);
+</script>
+</body>
+</html>

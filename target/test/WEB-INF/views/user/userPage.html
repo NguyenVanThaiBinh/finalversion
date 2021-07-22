@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/fragments :: html_head"/>
+<style>
+    .overwite {
+        text-align: center;
+        padding: 0px 11em;
+    }
+
+    .table-bordered {
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+    }
+
+    .table-bordered {
+        border: 2px solid #5f5e5e;
+
+    }
+</style>
+<body>
+<div th:replace="/layout/fragments :: body-banner"/>
+<header th:replace="/layout/fragments :: body-header-done"/>
+<div class="container overwite">
+    <h1 style="text-align: center">Cám ơn bạn <b><span th:utext="${userInfo.userName}"></span></b> đã đăng ký tiêm
+        vaccine!</h1>
+    <br><br>
+    <table class="table table-bordered ">
+        <tr>
+            <th style="text-align: center;font-size: 23px;">Thông tin</th>
+            <th style="text-align: center;font-size: 23px;">Kết quả</th>
+        </tr>
+        <tr>
+            <td>Họ và tên</td>
+            <td th:text="${userInfo.userName}"></td>
+        </tr>
+        <tr>
+            <td>Số Chứng minh nhân dân</td>
+            <td th:text="${userInfo.CMND}"></td>
+        </tr>
+        <tr>
+            <td>Tuổi</td>
+            <td  style="color: red;font-style: italic; font-weight: bold;"
+                 th:if="${userInfo.age < 16 || userInfo.age >65}"
+                 th:text="${userInfo.age} +' tuổi'"></td>
+            <td
+                 th:if="${userInfo.age >= 16 && userInfo.age <=65}"
+                 th:text="${userInfo.age} +' tuổi'"></td>
+
+        </tr>
+        <tr class="bg-danger">
+            <td>Kết quả đăng ký</td>
+            <td th:if="${userInfo.status == 1 || userInfo.status == 2}"
+                th:text="'Thành công'"></td>
+            <td th:if="${userInfo.status == 3}"
+                th:text="'Thất bại'"></td>
+        </tr>
+        <tr>
+            <td>Tình trạng sức khoẻ</td>
+            <td th:if="${userInfo.healthyStatus != null}" th:text="${userInfo.healthyStatus}"></td>
+        </tr>
+        <tr>
+            <td>Ngày tiêm chủng</td>
+            <td><b><span style=" font-style: italic;"
+                         th:if="${userInfo.dateVaccine != null}"
+                         th:text="${userInfo.dateVaccine}">---</span></b></td>
+        </tr>
+        <tr>
+            <td>Giờ tiêm chủng</td>
+            <td><b><span style=" font-style: italic;" th:if="${userInfo.timeVaccine != null}"
+                         th:text="${userInfo.timeVaccine}">---</span></b></td>
+
+        </tr>
+        <tr>
+            <td>Địa điểm tiêm chủng</td>
+            <td ><b><span style=" font-style: italic;"th:if="${userInfo.getAdminDestination() != null}" th:text="${userInfo.getAdminDestination().nameDestination}"></span></b></td>
+        </tr>
+
+
+    </table>
+    <h3 style="text-align: center;font-style: italic; ">Mọi thông tin xin liên hệ qua
+        <span style="color: red">036 550 3545 </span> để được tư vấn cụ thể!</h3>
+    <br><br>
+</div>
+
+
+<footer th:replace="/layout/fragments :: body-footer"/>
+</body>
+</html>

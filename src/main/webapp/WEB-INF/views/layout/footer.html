@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<footer th:fragment="footer">
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+            <li class="nav-item nav-profile">
+                <div class="nav-link" style=" margin-top: 40px">
+                    <div class="profile-image">
+                        <img
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeBldr94pWsdmNnApBcDvHQaCkZGmXAZ6y0bpXhgJbkY0aH4KrsVTHsbe4SO1mypqIHGY&usqp=CAU"
+                                alt="image"
+                        />
+                        <span
+                                class="online-status online"
+                        ></span>
+                        <!--change class online to offline or busy as needed-->
+                    </div>
+                    <div class="profile-name">
+                        <p class="name">Trung tâm tiêm chủng</p>
+                        <p class="name">Quốc gia</p>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">
+                    <span class="menu-title"><i style="color: dodgerblue" class="fas fa-bars"></i>&nbsp;&nbsp;  Dashboard</span>
+                    <span class="badge badge-success">New</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/user">
+
+                    <span class="menu-title"> <i style="color: dodgerblue" class="far fa-user"></i>&nbsp;&nbsp;Khách hàng</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/hospital">
+
+                    <span class="menu-title"> <i style="color: dodgerblue" class="fas fa-user-md"></i>&nbsp;&nbsp;Bệnh viện</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/timevaccine">
+
+                    <span class="menu-title"><i style="color: dodgerblue" class="far fa-clock"></i>&nbsp;&nbsp;Thời gian tiêm chủng</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/destination">
+
+                    <span class="menu-title"><i style="color: dodgerblue" class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;Điểm tiêm chủng</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/warehouse">
+
+                    <span class="menu-title"><i style="color: dodgerblue"  class="fas fa-warehouse"></i>&nbsp;&nbsp;Kho</span>
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+</footer>
+</body>
+</html>
